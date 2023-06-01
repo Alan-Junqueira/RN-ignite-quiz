@@ -85,13 +85,15 @@ export function History() {
                 }}
                 overshootLeft={false}
                 containerStyle={styles.swipeableContainer}
+                leftThreshold={10}
+                onSwipeableOpen={() => handleRemove(item.id, index)}
+                renderRightActions={() => null} //? Prevent IOS comportment
                 renderLeftActions={() => (
-                  <Pressable
+                  <View
                     style={styles.swipeableRemove}
-                    onPress={() => handleRemove(item.id, index)}
                   >
                     <Trash size={32} color={THEME.COLORS.GREY_100} />
-                  </Pressable>
+                  </View>
                 )}
               >
                 <HistoryCard data={item} />
