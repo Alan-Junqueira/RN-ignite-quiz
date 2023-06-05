@@ -45,7 +45,6 @@ export function History() {
         { text: 'Não', style: 'cancel' }
       ]
     );
-
   }
 
   useEffect(() => {
