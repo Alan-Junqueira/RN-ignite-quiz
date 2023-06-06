@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert, Text, View, BackHandler } from 'react-native';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Audio } from 'expo-av'
@@ -225,6 +225,12 @@ export function Quiz() {
       handleNextQuestion();
     }
   }, [points]);
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleStop)
+
+    return () => backHandler.remove()
+  }, [])
 
   if (isLoading) {
     return <Loading />
